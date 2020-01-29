@@ -62,12 +62,11 @@ def run():
                 acc_bal[t_acnt] = acc_bal[t_acnt]+t_amnt
                 print('Current balence: ', acc_bal[user])
                 print('The ammont in the transferd account: ',acc_bal[t_acnt])
-                print('THANK YOU!!!...')
+                print('THANK YOU!!!....')
                 break
             else:
                 print('Enter transfer account number correctly')
                 continue
-
 
 run()
 
