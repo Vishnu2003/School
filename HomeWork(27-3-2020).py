@@ -1,29 +1,29 @@
-def add(a,b):
+def addition(x,y):
     s=a+b
     return s
 
-def sub(a,b):
+def subtraction(x,y):
     s=a-b
     return s
 
-def mul(a,b):
+def multiplication(x,y):
     s=a*b
     return s
 
-def div(a,b):
+def division(x,y):
     s=a/b
     return s
 
-x=int(input('Enter the first number: '))
-y=int(input('enter the second number: '))
-z=input('select the operator(+,-,*,/): ')
+a=int(input('Enter the first number: '))
+b=int(input('enter the second number: '))
+op=input('select the operator(+,-,*,/): ')
 
-if z == '+':
-    print(add(x,y))
-if z == '-':
-    print(sub(x,y))
-if z == '*':
-    print(mul(x,y))
-if z == '/':
-    print(div(x,y))
+if op == '+':
+    print(addition(a,b))
+if op == '-':
+    print(subtraction(a,b))
+if op == '*':
+    print(multiplication(a,b))
+if op == '/':
+    print(division(a,b))
 
