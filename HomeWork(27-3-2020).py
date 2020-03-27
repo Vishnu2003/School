@@ -1,18 +1,18 @@
 def addition(x,y):
-    s=a+b
-    return s
+    ans=x+y
+    return ans
 
 def subtraction(x,y):
-    s=a-b
-    return s
+    ans=x-y
+    return ans
 
 def multiplication(x,y):
-    s=a*b
-    return s
+    ans=x*y
+    return ans
 
 def division(x,y):
-    s=a/b
-    return s
+    ans=x/y
+    return ans
 
 a=int(input('Enter the first number: '))
 b=int(input('enter the second number: '))
