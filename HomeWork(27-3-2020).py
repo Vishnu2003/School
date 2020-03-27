@@ -16,15 +16,14 @@ def div(a,b):
 
 x=int(input('Enter the first number: '))
 y=int(input('enter the second number: '))
-print('1.add \n2.subtract \n3.multiply \n4.divide')
-z=int(input('select the operator: '))
+z=input('select the operator(+,-,*,/): ')
 
-if z == 1:
+if z == '+':
     print(add(x,y))
-if z == 2:
+if z == '-':
     print(sub(x,y))
-if z == 3:
+if z == '*':
     print(mul(x,y))
-if z == 4:
+if z == '/':
     print(div(x,y))
 
