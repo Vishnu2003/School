@@ -1,3 +1,4 @@
+#Start Of Code
 import mysql.connector as mysql
 import matplotlib.pyplot as plt
 from tabulate import tabulate
@@ -129,7 +130,17 @@ def mainloop():
 
 mainloop()
     
-
+#End of Code
+    
+     
+OUTPUT:-
+https://ibb.co/J7Mt3YH
+https://ibb.co/DtNBxRh
+https://ibb.co/5nYW0FZ
+https://ibb.co/9yzqbqF
+https://ibb.co/pfLxpT1
+https://ibb.co/tq1SvDw
+https://ibb.co/64df7CH
 
 
 
