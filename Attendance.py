@@ -62,6 +62,7 @@ def query():
         values()
     except:
         print('Attendance Already Exists For Today....Come Back Tommorow')
+        input('Press Enter To Exit')
 
     try:
         for i in stds:
