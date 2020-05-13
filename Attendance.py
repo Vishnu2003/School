@@ -24,7 +24,7 @@ def sql():
     global cur
     con = mysql.connect(host="localhost",
                               user="root",
-                              passwd="myhome",
+                              passwd="passwd",
                               database="vishnu")
     cur = con.cursor()
     
