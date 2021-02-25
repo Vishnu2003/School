@@ -40,10 +40,20 @@ def login(): #function to login to aaccount
 
 def signup(): #function to signup an account
     acc_no = int(input('Enter your required Account Number : '))
+    # while True:
+    #     cur.execute('select accno from users')
+    #     users=cur.fetchall()
+    #     x=0
+    #     for i in users:
+    #         if acc_no==users[x][0]:
+    #             print('user already exist...Try again!...')
+    #         x+=1
+    #     break
+
     pass_ch = input('Enter your password : ')   
     pass_chk = input('Enter your password Again : ')
     if pass_ch == pass_chk:
-        cur.execute('insert into users(accno, password, balance) values({}, {}, 0)'.format(acc_no, pass_chk))
+        cur.execute('insert into users(accno, password, balance) values({}, \'{}\', 0)'.format(acc_no, pass_chk))
         con.commit()
         print('Account creation successful!... You may proceed to login...\n')
         initial()
@@ -52,13 +62,13 @@ def signup(): #function to signup an account
         signup()
 
 def actions(): #prompts users with diffrent actions
-    print('Select an action')
-    print('Select 1 to check balance')
+    print('\nSelect an action:-')
+    print('\nSelect 1 to check balance')
     print('Select 2 withdraw')
     print('Select 3 to deposit')
     print('Select 4 to transfer')
     while True:
-        usr_optn=int(input('Input your action: '))
+        usr_optn=int(input('\nInput your action: '))
         if usr_optn==1:
             chk_balance()
             break
@@ -78,28 +88,25 @@ def chk_balance(): #function to find the balance of an account
     cur.execute('select balance from users where accno = {}'.format(acc_no))
     bal_sql = cur.fetchall()
     print('Your current balance is: {}'.format(bal_sql[0][0]))
-    rep = input('Do you want to use atm again (y/n) ? : ')
-    if rep == 'y':
-        actions()
-
 
 def deposit(): #function to deposit ammount into account
     dep_money=int(input('Enter the ammount you want to deposit: '))
     cur.execute('update users set balance=balance+{} where accno={}'.format(dep_money, acc_no))
     con.commit()
     chk_balance()
-    rep = input('Do you want to use atm again (y/n) ? : ')
-    if rep == 'y':
-        actions()
 
 def withdraw(): #function to withdraw ammout from account
-    with_money=int(input('Enter the ammount you want to deposit: '))
-    cur.execute('update users set balance=balance-{} where accno={}'.format(with_money, acc_no))
-    con.commit()
-    chk_balance()
-    rep = input('Do you want to use atm again (y/n) ? : ')
-    if rep == 'y':
-        actions()
+    while True:
+        with_money=int(input('Enter the ammount you want to withdraw: '))
+        cur.execute('select balance from users where accno={}'.format(acc_no))
+        cur_bal=cur.fetchall()
+        if cur_bal[0][0]-with_money>=0:
+            cur.execute('update users set balance=balance-{} where accno={}'.format(with_money, acc_no))
+            con.commit()
+            chk_balance()
+            break
+        else:
+            print('Balance is insufficient....Try again!...')
 
 def transfer(): #function to transfer ammount from one account to another
     trans_accno=int(input('Enter the account number you want to transfer: '))
@@ -108,10 +115,15 @@ def transfer(): #function to transfer ammount from one account to another
     cur.execute('update users set balance=balance+{} where accno={}'.format(trans_money, trans_accno))
     con.commit()
     chk_balance()
-    rep = input('Do you want to use atm again (y/n) ? : ')
+
+initial()
+while True:
+    rep = input('\nDo you want to use bank again (y/n) ? : ')
     if rep == 'y':
         actions()
-
+    if rep=='n':
+        break
+    else:
+        print('Enter the correct option!...')
 con.close() #closing the established sql connection
-initial()
 #end
